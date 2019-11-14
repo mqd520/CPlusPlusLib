@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="00 Default">
+      <UniqueIdentifier>{73a99e57-8cce-45ec-8aa3-7b1e9141ad87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01 Def">
+      <UniqueIdentifier>{ff3da0a8-4427-4eae-9995-ec129f6b5dcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Ado">
+      <UniqueIdentifier>{ea5fc6a6-981e-4f5d-8010-643aeaa25ac5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02 DataSet">
+      <UniqueIdentifier>{7f0e6790-9e3a-46f6-a1bf-1915c04b82c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Db Service">
+      <UniqueIdentifier>{95ae1675-65e0-4179-b464-7280bdcec7e4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>00 Default</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>00 Default</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\Def.h">
+      <Filter>01 Def</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\DataRow.h">
+      <Filter>02 DataSet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\DataTable.h">
+      <Filter>02 DataSet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\DataSet.h">
+      <Filter>02 DataSet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\DataRowCollection.h">
+      <Filter>02 DataSet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\DataTableCollection.h">
+      <Filter>02 DataSet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\MSAdo.h">
+      <Filter>03 Ado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\VariantHelper.h">
+      <Filter>03 Ado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\AdoParam.h">
+      <Filter>03 Ado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\AdoResult.h">
+      <Filter>01 Def</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\Ado.h">
+      <Filter>03 Ado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\DbService.h">
+      <Filter>04 Db Service</Filter>
+    </ClInclude>
+    <ClInclude Include="DbServiceThread.h">
+      <Filter>04 Db Service</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\MyAdoApp.h" />
+    <ClInclude Include="include\MyAdo\DbRequest.h">
+      <Filter>04 Db Service</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAdo\FieldCollection.h">
+      <Filter>02 DataSet</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>00 Default</Filter>
+    </ClCompile>
+    <ClCompile Include="DataRow.cpp">
+      <Filter>02 DataSet</Filter>
+    </ClCompile>
+    <ClCompile Include="DataTable.cpp">
+      <Filter>02 DataSet</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSet.cpp">
+      <Filter>02 DataSet</Filter>
+    </ClCompile>
+    <ClCompile Include="DataRowCollection.cpp">
+      <Filter>02 DataSet</Filter>
+    </ClCompile>
+    <ClCompile Include="DataTableCollection.cpp">
+      <Filter>02 DataSet</Filter>
+    </ClCompile>
+    <ClCompile Include="VariantHelper.cpp">
+      <Filter>03 Ado</Filter>
+    </ClCompile>
+    <ClCompile Include="AdoParam.cpp">
+      <Filter>03 Ado</Filter>
+    </ClCompile>
+    <ClCompile Include="Ado.cpp">
+      <Filter>03 Ado</Filter>
+    </ClCompile>
+    <ClCompile Include="DbService.cpp">
+      <Filter>04 Db Service</Filter>
+    </ClCompile>
+    <ClCompile Include="DbServiceThread.cpp">
+      <Filter>04 Db Service</Filter>
+    </ClCompile>
+    <ClCompile Include="MyAdoApp.cpp" />
+    <ClCompile Include="FieldCollection.cpp">
+      <Filter>02 DataSet</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>00 Default</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

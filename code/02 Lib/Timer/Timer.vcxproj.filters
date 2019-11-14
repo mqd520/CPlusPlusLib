@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="99 Other">
+      <UniqueIdentifier>{079348b6-7822-4490-a1f5-f44c9f2981ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00 Timer">
+      <UniqueIdentifier>{dda3342c-a4cf-4ecf-b09f-c7bb3ddf583b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01 Thread">
+      <UniqueIdentifier>{2cb735e5-8f93-47f5-9646-c0e199c8fb56}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>99 Other</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>99 Other</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerThread2.h">
+      <Filter>01 Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerThread1.h">
+      <Filter>01 Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerMgr.h">
+      <Filter>00 Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\timer\Timer.h">
+      <Filter>00 Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\timer\TimerApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>99 Other</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerThread2.cpp">
+      <Filter>01 Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerThread1.cpp">
+      <Filter>01 Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>00 Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerMgr.cpp">
+      <Filter>00 Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>99 Other</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

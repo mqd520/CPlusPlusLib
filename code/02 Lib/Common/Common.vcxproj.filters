@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="99 Other">
+      <UniqueIdentifier>{34922ef5-ac24-4ed2-9398-c17959218c3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00 Tool">
+      <UniqueIdentifier>{b6a30ba0-4f95-4553-a67c-7d3aa06d5594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01 String &amp; Number">
+      <UniqueIdentifier>{3dc8efa8-32ea-490d-80b0-6f0a1c2b74a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02 Time">
+      <UniqueIdentifier>{e079a044-c15a-44bd-98fc-8fe2a055a62b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Buffer">
+      <UniqueIdentifier>{3058ce1e-eb3c-4241-bc3a-2452163bf038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Stream">
+      <UniqueIdentifier>{d355fc40-8c88-4771-9cab-a2f5d4100142}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05 Synchronize">
+      <UniqueIdentifier>{f6a93d0b-8efb-4116-b2e4-40d1bc544b5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06 Thread">
+      <UniqueIdentifier>{9cc7aed0-e454-428e-93b6-f4a0a34f6d26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07 Encryption">
+      <UniqueIdentifier>{e861ca5d-29a9-4121-9272-a86afbccd6b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="20 ShellService">
+      <UniqueIdentifier>{04171850-b54b-491c-a9a2-4e16150470cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="19 Exception">
+      <UniqueIdentifier>{31969afd-9331-4e71-8a89-d6e019625d2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="18 Ini">
+      <UniqueIdentifier>{d37e9eb8-c702-4e0c-8919-89c47254d4a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08 Regex">
+      <UniqueIdentifier>{9093aa2c-e97c-4592-b0b3-fddab513efc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09 Log">
+      <UniqueIdentifier>{ffacff68-759d-4384-99c8-b0e018e94a85}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>99 Other</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>99 Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\Base64.h">
+      <Filter>07 Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\BufferTool.h">
+      <Filter>03 Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\ByteStream.h">
+      <Filter>04 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\CommonTool.h">
+      <Filter>00 Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\Event.h">
+      <Filter>05 Synchronize</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\ExceptionHandler.h">
+      <Filter>19 Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\IniHelper.h">
+      <Filter>18 Ini</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\Lock.h">
+      <Filter>05 Synchronize</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\MemoryStream.h">
+      <Filter>04 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\Mutex.h">
+      <Filter>05 Synchronize</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\NetworkStream.h">
+      <Filter>04 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\NetworkStreamRead.h">
+      <Filter>04 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\NetworkStreamWrite.h">
+      <Filter>04 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\Semaphore.h">
+      <Filter>05 Synchronize</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\sha1.h">
+      <Filter>07 Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\ShellService.h">
+      <Filter>20 ShellService</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\StreamTool.h">
+      <Filter>04 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\StringTool.h">
+      <Filter>01 String &amp; Number</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\Thread.h">
+      <Filter>06 Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\RegexTool.h">
+      <Filter>08 Regex</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\DesHelper.h">
+      <Filter>07 Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\md5.h">
+      <Filter>07 Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\NumberTool.h">
+      <Filter>01 String &amp; Number</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\TimeTool.h">
+      <Filter>02 Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\Log.h">
+      <Filter>09 Log</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>99 Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Base64.cpp">
+      <Filter>07 Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="BufferTool.cpp">
+      <Filter>03 Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="ByteStream.cpp">
+      <Filter>04 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>05 Synchronize</Filter>
+    </ClCompile>
+    <ClCompile Include="ExceptionHandler.cpp">
+      <Filter>19 Exception</Filter>
+    </ClCompile>
+    <ClCompile Include="IniHelper.cpp">
+      <Filter>18 Ini</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock.cpp">
+      <Filter>05 Synchronize</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryStream.cpp">
+      <Filter>04 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="Mutex.cpp">
+      <Filter>05 Synchronize</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkStreamRead.cpp">
+      <Filter>04 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkStreamWrite.cpp">
+      <Filter>04 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkStream.cpp">
+      <Filter>04 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="Semaphore.cpp">
+      <Filter>05 Synchronize</Filter>
+    </ClCompile>
+    <ClCompile Include="sha1.cpp">
+      <Filter>07 Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellService.cpp">
+      <Filter>20 ShellService</Filter>
+    </ClCompile>
+    <ClCompile Include="StreamTool.cpp">
+      <Filter>04 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="StringTool.cpp">
+      <Filter>01 String &amp; Number</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread.cpp">
+      <Filter>06 Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="RegexTool.cpp">
+      <Filter>08 Regex</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonTool.cpp">
+      <Filter>00 Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="DesHelper.cpp">
+      <Filter>07 Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>07 Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="NumberTool.cpp">
+      <Filter>01 String &amp; Number</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeTool.cpp">
+      <Filter>02 Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>09 Log</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>99 Other</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

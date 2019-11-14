@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="99 Other">
+      <UniqueIdentifier>{c1565b85-51c1-4e6e-ba90-12aa05c2448e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07 Stream">
+      <UniqueIdentifier>{298d175f-0754-4b91-84ac-ebb2e7b9ac5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08 Thread">
+      <UniqueIdentifier>{546d0211-4e25-4584-a575-e18871703fbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01 String">
+      <UniqueIdentifier>{0dcafbd5-3d52-42be-a187-5183d733670b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>99 Other</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>99 Other</Filter>
+    </ClInclude>
+    <ClInclude Include="ByteStreamDemo.h">
+      <Filter>07 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread1.h">
+      <Filter>08 Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadDemo.h">
+      <Filter>08 Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="StringDemo.h">
+      <Filter>01 String</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryStreamDemo.h">
+      <Filter>07 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="StreamToolDemo.h">
+      <Filter>07 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkStreamDemo.h">
+      <Filter>07 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkStreamReadDemo.h">
+      <Filter>07 Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkStreamWriteDemo.h">
+      <Filter>07 Stream</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>99 Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Common.cpp" />
+    <ClCompile Include="ByteStreamDemo.cpp">
+      <Filter>07 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadDemo.cpp">
+      <Filter>08 Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread1.cpp">
+      <Filter>08 Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="StringDemo.cpp">
+      <Filter>01 String</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryStreamDemo.cpp">
+      <Filter>07 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="StreamToolDemo.cpp">
+      <Filter>07 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkStreamDemo.cpp">
+      <Filter>07 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkStreamReadDemo.cpp">
+      <Filter>07 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkStreamWriteDemo.cpp">
+      <Filter>07 Stream</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>99 Other</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

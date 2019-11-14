@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="99 Other">
+      <UniqueIdentifier>{bdd63363-38f6-40e5-9f0d-b60d023764ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00">
+      <UniqueIdentifier>{c136129c-5a42-41a8-85c8-5902a2cf25ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Tcp">
+      <UniqueIdentifier>{75f8b391-56ed-4702-a2ad-9fc7771f1621}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04">
+      <UniqueIdentifier>{59767774-04b2-4890-88c1-913b64657905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06 Tcp">
+      <UniqueIdentifier>{a8a5c727-b87c-42f1-b9eb-146ba496a923}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05 Tcp Service">
+      <UniqueIdentifier>{3395c0b2-00f1-4f49-8bb1-c6d5fa8c2e63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07 Thread">
+      <UniqueIdentifier>{71273907-2e8a-4a70-808a-53995c55767e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02 Common">
+      <UniqueIdentifier>{b77f40a9-0bb2-4e4c-864d-9f62d5208ceb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>99 Other</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>99 Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\tcp\Def.h">
+      <Filter>00</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\tcp\TcpApp.h" />
+    <ClInclude Include="Include\tcp\TcpClient.h">
+      <Filter>06 Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\tcp\TcpServer.h">
+      <Filter>06 Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\tcp\TcpService.h">
+      <Filter>05 Tcp Service</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpServiceMgr.h">
+      <Filter>05 Tcp Service</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\tcp\SocketTool.h">
+      <Filter>02 Common</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkerThread.h">
+      <Filter>07 Thread</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>99 Other</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpApp.cpp" />
+    <ClCompile Include="TcpClient.cpp">
+      <Filter>06 Tcp</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpServer.cpp">
+      <Filter>06 Tcp</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpService.cpp">
+      <Filter>05 Tcp Service</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpServiceMgr.cpp">
+      <Filter>05 Tcp Service</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketTool.cpp">
+      <Filter>02 Common</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkerThread.cpp">
+      <Filter>07 Thread</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>99 Other</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
