@@ -190,7 +190,7 @@ namespace MyAdo
 	{
 		if (MyAdoApp::bEnableAutoSqlLog)
 		{
-			Write2File(ELogType::Sql, "Sql: %s, param: %s", sql.c_str(), "");
+			Write2File(ELogType::Sql, __FUNCDNAME__, __FILE__, __LINE__, "Sql: %s, param: %s", sql.c_str(), "");
 		}
 	}
 
@@ -207,13 +207,13 @@ namespace MyAdo
 
 		if (bWriteConsole)
 		{
-			Log::Write_2_Console(ELogType::Error, chErrorInfo, bWriteFile);
+			Log::Write_2_Console(ELogType::Error, chErrorInfo, bWriteFile, __FUNCDNAME__);
 		}
 		else
 		{
 			if (bWriteFile)
 			{
-				Log::Write_2_File(ELogType::Error, chErrorInfo, true, true);
+				Log::Write_2_File(ELogType::Error, chErrorInfo, true, true, __FUNCDNAME__);
 			}
 		}
 	}
