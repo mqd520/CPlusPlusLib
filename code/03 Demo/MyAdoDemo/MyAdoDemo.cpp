@@ -36,7 +36,7 @@ BEGIN_MESSAGE_MAP(CMyAdoDemoApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-void OnLog(ELogType type, string& log);
+void OnLog(ELogType type, string& log, ExtraLogInfo& info);
 
 
 
@@ -92,9 +92,11 @@ BOOL CMyAdoDemoApp::InitInstance()
 
 
 
-	Log::RegLogCallback(OnLog);
+	Log::RegLogFileCallback(OnLog);
 
-	MyAdoApp::Init(3);
+
+
+	MyAdoApp::Init(1);
 	AdoHelper::Init();
 
 
@@ -128,14 +130,23 @@ BOOL CMyAdoDemoApp::InitInstance()
 	return FALSE;
 }
 
-void OnLog(ELogType type, string& log)
+void OnLog(ELogType type, string& log, ExtraLogInfo& info)
 {
 	string path = CommonTool::GetCurrentExeDir() + "log.txt";
 
+	char ch[1024] = { 0 };
+	sprintf_s(ch, "[%s] [%s] [0x%04x] [%s:%s:%d] \n %s \n\n",
+		TimeTool::Format(info.time, true, "yyyy-mm-dd HH:MM:ss.ff").c_str(),
+		Log::GetLogTypeStr(type).c_str(),
+		info.nThreadId,
+		info.strFileName.c_str(),
+		info.strFunctionName.c_str(),
+		info.nRowNo,
+		log.c_str());
+
 	fstream fs;
 	fs.open(path, ios::app);
-	fs << log;
-	fs << "\n";
+	fs << ch;
 	fs.close();
 }
 
