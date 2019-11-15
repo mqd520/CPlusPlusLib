@@ -7,6 +7,8 @@ using namespace std;
 using namespace std::placeholders;
 
 
+#define		ELogType_Custom			(1000)			// custom log type
+
 namespace com
 {
 	// Log Type
@@ -22,10 +24,37 @@ namespace com
 		Http = 101		// Http request
 	};
 
-	// Log Callback
+
+	// Extra log info
+	typedef struct tagExtraLogInfo
+	{
+		string	strFileName;	// file name
+		string strFunctionName;	// function name
+		int		nRowNo;			// row no.
+		DWORD	nThreadId;		// thread Id
+		time_t	time;			// time
+	}ExtraLogInfo;	// Extra log info
+
+
+	// Custom Log Type Info
+	typedef struct tagCustomLogTypeInfo
+	{
+		int		type;		// Custom log type
+		string	strType;	// Custom log type text
+	}CustomLogTypeInfo;
+
+	// Log console callback
+	// ELogType:		Log Type
+	// string&:			Log
+	// ExtraLogInfo&:	Extra log info
+	using LogConsoleCallback = std::function < void(ELogType, string& log, ExtraLogInfo&) >;
+
+
+	// Log file callback
 	// ELogType:		Log Type
 	// string&:			log
-	using LogCallback = std::function < void(ELogType, string&) > ;
+	// ExtraLogInfo&:	Extra log info
+	using LogFileCallback = std::function < void(ELogType, string&, ExtraLogInfo&) >;
 
 
 	// Log
@@ -35,14 +64,21 @@ namespace com
 		Log();
 
 	private:
-		static vector<LogCallback> callbacks;		// callback list
+		static vector<LogConsoleCallback>	vecConsoleCallbacks;		// Log console callback list
+		static vector<LogFileCallback>		vecFileCallbacks;			// Log file callback list
+		static vector<CustomLogTypeInfo>	vecCustomTypes;				// Custom Log type info list
 
-	protected:
+	private:
 		//************************************
-		// Method:    Get Log Type Str
+		// Method:    WriteConsole
 		// Parameter: ELogType type
+		// Parameter: const string & log
+		// Parameter: bool bPrefix1
+		// Parameter: bool bPrefix2
+		// Parameter: bool bColor
+		// Parameter: ExtraLogInfo & info
 		//************************************
-		static string GetLogTypeStr(ELogType type);
+		static void WriteConsole(ELogType type, const string& log, bool bPrefix1, bool bPrefix2, bool bColor, ExtraLogInfo& info);
 
 	public:
 		//************************************
@@ -54,7 +90,8 @@ namespace com
 		// Parameter: bool bPrefix2, whether show Datetime String
 		// Parameter: bool bColor,   whether show different color
 		//************************************
-		static void Write_2_Console(ELogType type, const string& log, bool bWrite2File, bool bPrefix1, bool bPrefix2, bool bColor);
+		static void Write_2_Console(ELogType type, const string& log, bool bWrite2File, bool bPrefix1, bool bPrefix2, bool bColor,
+			const string& strFunctionName, const string& strFilePath = __FILE__, int nRowNo = __LINE__);
 
 		//************************************
 		// Method:    Write to Console
@@ -62,7 +99,8 @@ namespace com
 		// Parameter: const string & log
 		// Parameter: bool bWrite2File
 		//************************************
-		static void Write_2_Console(ELogType type, const string& log, bool bWrite2File);
+		static void Write_2_Console(ELogType type, const string& log, bool bWrite2File,
+			const string& strFunctionName, const string& strFilePath = __FILE__, int nRowNo = __LINE__);
 
 		//************************************
 		// Method:    Write to Console
@@ -74,7 +112,9 @@ namespace com
 		// Parameter: const string & format
 		// Parameter: ...
 		//************************************
-		static void Write_2_Console(ELogType type, bool bWrite2File, bool bPrefix1, bool bPrefix2, bool bColor, const char* format, ...);
+		static void Write_2_Console(ELogType type, bool bWrite2File, bool bPrefix1, bool bPrefix2, bool bColor,
+			const string& strFunctionName, const string& strFilePath, int nRowNo,
+			const char* format, ...);
 
 		//************************************
 		// Method:    Write to Console
@@ -83,14 +123,17 @@ namespace com
 		// Parameter: const string & format
 		// Parameter: ...
 		//************************************
-		static void Write_2_Console(ELogType type, bool bWrite2File, const char* format, ...);
+		static void Write_2_Console(ELogType type, bool bWrite2File,
+			const string& strFunctionName, const string& strFilePath, int nRowNo,
+			const char* format, ...);
 
 		//************************************
 		// Method:    Write to File
 		// Parameter: ELogType type
 		// Parameter: const string & log
 		//************************************
-		static void Write_2_File(ELogType type, const string& log);
+		static void Write_2_File(ELogType type, const string& log,
+			const string& strFunctionName, const string& strFilePath = __FILE__, int nRowNo = __LINE__);
 
 		//************************************
 		// Method:    Write to File
@@ -101,7 +144,8 @@ namespace com
 		// Parameter: bool bPrefix2, whether show Datetime String
 		// Parameter: bool bColor,   whether show different color
 		//************************************
-		static void Write_2_File(ELogType type, const string& log, bool bPrefix1, bool bPrefix2);
+		static void Write_2_File(ELogType type, const string& log, bool bPrefix1, bool bPrefix2,
+			const string& strFunctionName, const string& strFilePath = __FILE__, int nRowNo = __LINE__);
 
 		//************************************
 		// Method:    Write to File
@@ -111,25 +155,47 @@ namespace com
 		// Parameter: const string & format
 		// Parameter: ...
 		//************************************
-		static void Write_2_File(ELogType type, bool bPrefix1, bool bPrefix2, const char* format, ...);
+		static void Write_2_File(ELogType type, bool bPrefix1, bool bPrefix2,
+			const string& strFunctionName, const string& strFilePath, int nRowNo,
+			const char* format, ...);
 
 		//************************************
-		// Method:    Reg Common Log Callback
-		// Parameter: LogCallback callback
+		// Method:    Reg Log Console Callback
+		// Parameter: LogConsoleCallback callback
 		//************************************
-		static void RegLogCallback(LogCallback callback);
+		static void RegLogConsoleCallback(LogConsoleCallback callback);
+
+		//************************************
+		// Method:    Reg Log File Callback
+		// Parameter: LogFileCallback callback
+		//************************************
+		static void RegLogFileCallback(LogFileCallback callback);
+
+		//************************************
+		// Method:    Get Log Type Str
+		// Parameter: ELogType type
+		//************************************
+		static string GetLogTypeStr(ELogType type);
+
+		//************************************
+		// Method:    Add Custom Log Type
+		// Parameter: int type
+		// Parameter: const string & strType
+		//************************************
+		static bool AddCustomLogType(int type, const string& strType);
 	};
 
-	// Write to File
-	// Parameter: ELogType type
-	// Parameter: const string & format
-	// Parameter: ...
-#define Write2File(type, format, ...)					Log::Write_2_File(type, true, true, format, __VA_ARGS__)
 
 	// Write to Console
 	// Parameter: ELogType type
 	// Parameter: const string & format
 	// Parameter: ...
-#define Write2Console(type, format, ...)				Log::Write_2_Console(type, true, format, __VA_ARGS__)
+#define Write2Console(type, strFunctionName, strFilePath, nRowNo, format, ...)				Log::Write_2_Console(type, true, strFunctionName, strFilePath, nRowNo, format, __VA_ARGS__)
+
+	// Write to File
+	// Parameter: ELogType type
+	// Parameter: const string & format
+	// Parameter: ...
+#define Write2File(type, strFunctionName, strFilePath, nRowNo, format, ...)					Log::Write_2_File(type, true, true, strFunctionName, strFilePath, nRowNo, format, __VA_ARGS__)
 
 }
