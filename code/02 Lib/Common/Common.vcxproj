@@ -110,6 +110,7 @@
     <ClInclude Include="Include\com\StringTool.h" />
     <ClInclude Include="Include\com\Thread.h" />
     <ClInclude Include="Include\com\TimeTool.h" />
+    <ClInclude Include="Include\com\UrlTool.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClCompile Include="StringTool.cpp" />
     <ClCompile Include="Thread.cpp" />
     <ClCompile Include="TimeTool.cpp" />
+    <ClCompile Include="UrlTool.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

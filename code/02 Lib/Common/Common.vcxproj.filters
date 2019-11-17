@@ -132,6 +132,9 @@
     <ClInclude Include="Include\com\Aes.h">
       <Filter>07 Encryption</Filter>
     </ClInclude>
+    <ClInclude Include="Include\com\UrlTool.h">
+      <Filter>00 Tool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -217,6 +220,9 @@
     </ClCompile>
     <ClCompile Include="Aes.cpp">
       <Filter>07 Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="UrlTool.cpp">
+      <Filter>00 Tool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
