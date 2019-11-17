@@ -17,6 +17,8 @@ using namespace com;
 
 #include "ThreadDemo.h"
 
+#include "AesDemo.h"
+
 
 #include <queue>
 #include <limits>
@@ -44,6 +46,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 
+	AesDemo::Test2();
+
 
 
 
@@ -61,11 +65,6 @@ int _tmain(int argc, _TCHAR* argv[])
 			break;
 		}
 	}
-
-
-
-	printf("Main over \n");
-	::Sleep(3 * 1000);
 
 	return 0;
 }

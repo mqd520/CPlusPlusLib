@@ -13,6 +13,9 @@
     <Filter Include="01 String">
       <UniqueIdentifier>{0dcafbd5-3d52-42be-a187-5183d733670b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="09 Encrypt">
+      <UniqueIdentifier>{6eb82054-9c0d-41e8-8b7d-837ef95ffb2a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -48,12 +51,14 @@
     <ClInclude Include="NetworkStreamWriteDemo.h">
       <Filter>07 Stream</Filter>
     </ClInclude>
+    <ClInclude Include="AesDemo.h">
+      <Filter>09 Encrypt</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>99 Other</Filter>
     </ClCompile>
-    <ClCompile Include="Common.cpp" />
     <ClCompile Include="ByteStreamDemo.cpp">
       <Filter>07 Stream</Filter>
     </ClCompile>
@@ -80,6 +85,10 @@
     </ClCompile>
     <ClCompile Include="NetworkStreamWriteDemo.cpp">
       <Filter>07 Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonDemo.cpp" />
+    <ClCompile Include="AesDemo.cpp">
+      <Filter>09 Encrypt</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
