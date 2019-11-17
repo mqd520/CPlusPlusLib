@@ -126,6 +126,12 @@
     <ClInclude Include="Include\com\Log.h">
       <Filter>09 Log</Filter>
     </ClInclude>
+    <ClInclude Include="Include\com\AesHelper.h">
+      <Filter>07 Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\com\Aes.h">
+      <Filter>07 Encryption</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -205,6 +211,12 @@
     </ClCompile>
     <ClCompile Include="Log.cpp">
       <Filter>09 Log</Filter>
+    </ClCompile>
+    <ClCompile Include="AesHelper.cpp">
+      <Filter>07 Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="Aes.cpp">
+      <Filter>07 Encryption</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -43,6 +43,7 @@ namespace com
 		string	strType;	// Custom log type text
 	}CustomLogTypeInfo;
 
+
 	// Log console callback
 	// ELogType:		Log Type
 	// string&:			Log

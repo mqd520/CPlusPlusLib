@@ -11,6 +11,7 @@ namespace com
 {
 	vector<LogConsoleCallback>	Log::vecConsoleCallbacks;
 	vector<LogFileCallback>		Log::vecFileCallbacks;
+	vector<CustomLogTypeInfo>	Log::vecCustomTypes;
 
 
 	Log::Log()
