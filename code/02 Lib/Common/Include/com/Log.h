@@ -48,7 +48,7 @@ namespace com
 	// ELogType:		Log Type
 	// string&:			Log
 	// ExtraLogInfo&:	Extra log info
-	using LogConsoleCallback = std::function < void(ELogType, string& log, ExtraLogInfo&) >;
+	using LogConsoleCallback = std::function < void(ELogType, string&, ExtraLogInfo&) >;
 
 
 	// Log file callback
