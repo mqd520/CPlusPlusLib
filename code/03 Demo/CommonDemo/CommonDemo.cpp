@@ -19,6 +19,9 @@ using namespace com;
 
 #include "AesDemo.h"
 
+#include "com/UrlTool.h"
+using namespace com;
+
 
 #include <queue>
 #include <limits>
@@ -42,13 +45,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	//BYTE buf2[] = { 0, 0, 0 };
 	//memcpy(buf2, buf1, 3);
 	//printf("buf2: %d, %d, %d \n", buf2[0], buf2[1], buf2[2]);
-
-
-
-
-	AesDemo::Test2();
-
-
 
 
 
