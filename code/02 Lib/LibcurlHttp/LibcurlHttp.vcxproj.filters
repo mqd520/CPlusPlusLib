@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="00 Default">
+      <UniqueIdentifier>{178b109b-eb38-4fb1-890f-86f4505939e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01 Http">
+      <UniqueIdentifier>{3e9ea992-f0ba-46db-8d5c-38726007cecd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>00 Default</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>00 Default</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LibcurlHttp\LibcurlHttp.h">
+      <Filter>01 Http</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libcurlHttp\LibcurlHttpApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>00 Default</Filter>
+    </ClCompile>
+    <ClCompile Include="LibcurlHttp.cpp">
+      <Filter>01 Http</Filter>
+    </ClCompile>
+    <ClCompile Include="LibcurlHttpApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>00 Default</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
