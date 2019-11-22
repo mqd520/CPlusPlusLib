@@ -23,7 +23,7 @@ namespace libcurlHttp
 		CURLcode code = curl_global_init(CURL_GLOBAL_DEFAULT);
 		if (code != CURLE_OK)
 		{
-			Log::Write_2_Console(ELogType::Error, "curl global init fail", true, __FUNCDNAME__, __FILE__, __LINE__);
+			Log::Write_2_Console(ELogType::Error, "curl global init fail", true, __FUNCTION__, __FILE__, __LINE__);
 		}
 	}
 

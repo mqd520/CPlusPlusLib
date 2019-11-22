@@ -35,7 +35,7 @@ namespace libcurlHttp
 		// Method:    SetHeadersOpt
 		// Parameter: CURL * pCurl
 		//************************************
-		void SetHeadersOpt(CURL* pCurl);
+		struct curl_slist* SetHeadersOpt(CURL* pCurl);
 
 		//************************************
 		// Method:    Set Body Opt
@@ -168,7 +168,7 @@ namespace libcurlHttp
 		// Method:    Set Body Data
 		// Parameter: string & data
 		//************************************
-		void SetBodyData(string& data);
+		void SetBodyData(const string& data);
 
 	public:
 		//************************************

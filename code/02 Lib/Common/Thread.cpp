@@ -60,7 +60,7 @@ namespace com
 
 	void Thread::OnStart()
 	{
-		Log::Write_2_Console(ELogType::Debug, true, __FUNCDNAME__, __FILE__, __LINE__,
+		Log::Write_2_Console(ELogType::Debug, true, __FUNCTION__, __FILE__, __LINE__,
 			"Thread start: %s, Id: 0x%04x, Handle: 0x%04x", strThreadName.c_str(), dwThreadId, hThd);
 
 		for (auto & it : vecStartCallbacks)
@@ -115,7 +115,7 @@ namespace com
 
 	void Thread::OnExit()
 	{
-		Log::Write_2_Console(ELogType::Debug, true, __FUNCDNAME__, __FILE__, __LINE__,
+		Log::Write_2_Console(ELogType::Debug, true, __FUNCTION__, __FILE__, __LINE__,
 			"Thread exit: %s", strThreadName.c_str());
 	}
 
@@ -254,7 +254,7 @@ namespace com
 		}
 		else
 		{
-			Log::Write_2_Console(ELogType::Error, true, __FUNCDNAME__, __FILE__, __LINE__,
+			Log::Write_2_Console(ELogType::Error, true, __FUNCTION__, __FILE__, __LINE__,
 				"Thread start error, name: %s, handle: %d, Id: %d",
 				pThd->GetThreadName().c_str(), pThd->GetThreadHandle(), pThd->GetThreadId());
 

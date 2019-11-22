@@ -7,6 +7,8 @@
 #define Log_MaxLogLength		(1024)		// max log string length
 
 
+string GetPathFile(const string& path);
+
 namespace com
 {
 	vector<LogConsoleCallback>	Log::vecConsoleCallbacks;
@@ -68,7 +70,7 @@ namespace com
 	void Log::Write_2_Console(ELogType type, const string& log, bool bWrite2File, bool bPrefix1, bool bPrefix2, bool bColor,
 		const string& strFunctionName, const string& strFilePath /*= __FILE__*/, int nRowNo /*= __LINE__*/)
 	{
-		ExtraLogInfo info = { strFilePath, strFunctionName, nRowNo, 1, TimeTool::GetCurTimeStamp() };
+		ExtraLogInfo info = { GetPathFile(strFilePath), strFunctionName, nRowNo, 1, TimeTool::GetCurTimeStamp() };
 
 		if (vecConsoleCallbacks.empty())
 		{
@@ -132,7 +134,7 @@ namespace com
 	void Log::Write_2_File(ELogType type, const string& log,
 		const string& strFunctionName, const string& strFilePath /*= __FILE__*/, int nRowNo /*= __LINE__*/)
 	{
-		ExtraLogInfo info = { strFilePath, strFunctionName, nRowNo, 1, TimeTool::GetCurTimeStamp() };
+		ExtraLogInfo info = { GetPathFile(strFilePath), strFunctionName, nRowNo, 1, TimeTool::GetCurTimeStamp() };
 
 		for (auto & it : vecFileCallbacks)
 		{
@@ -243,4 +245,15 @@ namespace com
 
 		return result;
 	}
+}
+
+string GetPathFile(const string& path)
+{
+	string::size_type index = path.find_last_of("/");
+	if (index != string::npos)
+	{
+		return path.substr(index + 1);
+	}
+
+	return "";
 }

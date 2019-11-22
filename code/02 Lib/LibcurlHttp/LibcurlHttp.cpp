@@ -14,15 +14,22 @@ size_t OnWriteHeader(void* buffer, size_t size, size_t nmemb, void* lpVoid);
 
 namespace libcurlHttp
 {
-	void LibcurlHttp::SetHeadersOpt(CURL* pCurl)
+	struct curl_slist * LibcurlHttp::SetHeadersOpt(CURL* pCurl)
 	{
 		struct curl_slist *pHeaders = NULL;
 
 		for (auto & it : mapHeaders)
 		{
 			string str = it.first + ":" + it.second;
-			pHeaders = curl_slist_append(pHeaders, str.c_str());
+			//pHeaders = curl_slist_append(pHeaders, str.c_str());
 		}
+
+		if (pHeaders)
+		{
+			//curl_easy_setopt(pCurl, CURLOPT_HTTPHEADER, pHeaders);
+		}
+
+		return pHeaders;
 	}
 
 	void LibcurlHttp::SetBodyOpt(CURL* pCurl, const string& method)
@@ -30,8 +37,6 @@ namespace libcurlHttp
 		if (method == "POST")
 		{
 			struct curl_slist *pBody = NULL;
-
-			curl_easy_setopt(pCurl, CURLOPT_POST, true);
 
 			if (IsFormData())
 			{
@@ -52,6 +57,7 @@ namespace libcurlHttp
 				}
 
 				curl_easy_setopt(pCurl, CURLOPT_POSTFIELDS, formData.c_str());
+				curl_easy_setopt(pCurl, CURLOPT_POSTFIELDSIZE, formData.size());
 			}
 			else
 			{
@@ -76,7 +82,7 @@ namespace libcurlHttp
 		CURL *pCurl = curl_easy_init();
 		if (nullptr == pCurl)
 		{
-			Log::Write_2_Console(ELogType::Error, "Http error, curl init fail", true, __FUNCDNAME__, __FILE__, __LINE__);
+			Log::Write_2_Console(ELogType::Error, "curl init fail", true, __FUNCTION__, __FILE__, __LINE__);
 
 			return nullptr;
 		}
@@ -95,8 +101,13 @@ namespace libcurlHttp
 		{
 			curl_easy_setopt(pCurl, CURLOPT_URL, strUrl.c_str());
 
-			SetHeadersOpt(pCurl);
-			SetBodyOpt(pCurl, method);
+			if (method == "POST" && IsFormData())
+			{
+				curl_easy_setopt(pCurl, CURLOPT_POST, true);
+			}
+
+			struct curl_slist* pHeaders = SetHeadersOpt(pCurl);
+			//SetBodyOpt(pCurl, method);
 
 			curl_easy_setopt(pCurl, CURLOPT_READFUNCTION, NULL);
 
@@ -146,6 +157,8 @@ namespace libcurlHttp
 			curl_easy_setopt(pCurl, CURLOPT_FOLLOWLOCATION, 1);
 			curl_easy_setopt(pCurl, CURLOPT_NOSIGNAL, 1);
 
+			SetBodyOpt(pCurl, method);
+
 			if (LibcurlHttpApp::IsEnableHttpReqLog())
 			{
 				string data;
@@ -162,7 +175,7 @@ namespace libcurlHttp
 				}
 
 				string log = StringTool::Format("[%s] %s", strUrl.c_str(), data.c_str());
-				Log::Write_2_File(ELogType::Http, log, __FUNCDNAME__, __FILE__, __LINE__);
+				Log::Write_2_File(ELogType::Http, log, __FUNCTION__, __FILE__, __LINE__);
 			}
 
 			CURLcode code = curl_easy_perform(pCurl);
@@ -201,11 +214,12 @@ namespace libcurlHttp
 
 			if (code != CURLE_OK)
 			{
-				string str = StringTool::Format("Http error, curl code: %d", code);
-				Log::Write_2_Console(ELogType::Error, str, true, __FUNCDNAME__, __FILE__, __LINE__);
+				string str = StringTool::Format("Http error, curl code: %d, %s", code, curl_easy_strerror(code));
+				Log::Write_2_Console(ELogType::Error, str, true, __FUNCTION__, __FILE__, __LINE__);
 			}
 
 			curl_easy_cleanup(pCurl);
+			curl_slist_free_all(pHeaders);
 		}
 	}
 
@@ -307,7 +321,7 @@ namespace libcurlHttp
 		SetFormItem(item, NumberTool::ToString(val, decimal));
 	}
 
-	void LibcurlHttp::SetBodyData(string& data)
+	void LibcurlHttp::SetBodyData(const string& data)
 	{
 		strBodyData = data;
 	}
