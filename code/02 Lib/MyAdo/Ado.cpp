@@ -70,6 +70,11 @@ namespace MyAdo
 			sprintf_s(ch, "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=%s;User ID=%s;Password=%s;",
 				strAddr.c_str(), strUsername.c_str(), strPwd.c_str());
 		}
+		else if (type == EDbType::MySQL)
+		{
+			sprintf_s(ch, "Driver={MySQL ODBC 8.0 ANSI Driver};DSN=%s;database=%s;uid=%s;pwd=%s;",
+				strAddr.c_str(), strDbName.c_str(), strUsername.c_str(), strPwd.c_str());
+		}
 
 		return ch;
 	}
