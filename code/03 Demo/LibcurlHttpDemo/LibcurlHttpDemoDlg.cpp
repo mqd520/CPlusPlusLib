@@ -96,7 +96,9 @@ void CLibcurlHttpDemoDlg::OnBnClickedButton1()
 {
 	// TODO:  在此添加控件通知处理程序代码
 	LibcurlHttp http;
-	LibcurlHttpResult result = http.Get("http://127.0.0.1:8017", true, true);
+	http.SetFormItem("username", "AAtest001");
+	http.SetFormItem("pwd", "a123456");
+	LibcurlHttpResult result = http.Post("http://127.0.0.1:8017", true, true);
 
 	int status = result.nHttpStatus;
 
