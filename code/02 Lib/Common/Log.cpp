@@ -50,11 +50,11 @@ namespace com
 			}
 			else if (type == ELogType::Error)
 			{
-				color = FOREGROUND_RED;
+				color = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | BACKGROUND_RED | FOREGROUND_INTENSITY;
 			}
 			else if (type == ELogType::Fatal)
 			{
-				color = FOREGROUND_RED | FOREGROUND_INTENSITY;
+				color = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | BACKGROUND_RED | FOREGROUND_INTENSITY;
 			}
 
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);

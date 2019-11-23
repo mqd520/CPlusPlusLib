@@ -12,7 +12,7 @@ namespace com
 	typedef void(*LPExceptionCallback)(void* pParam1, void* pParam2);
 
 	// 异常处理类
-	class ExceptionHandler
+	class ExceptionHandler final
 	{
 	private:
 		ExceptionHandler();
