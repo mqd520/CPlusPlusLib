@@ -204,7 +204,8 @@ namespace MyAdo
 		return chErrorInfo;
 	}
 
-	void Ado::ProcessError(string strErrorInfo, bool bWriteConsole /*= true*/, bool bWriteFile /*= true*/)
+	void Ado::ProcessError(string strErrorInfo, const string& strFunctionName, bool bWriteConsole /*= true*/, bool bWriteFile /*= true*/,
+		const string& strFilePath /*= __FILE__*/, int nRowNo /*= __LINE__*/)
 	{
 		ZeroMemory(chErrorInfo, 1024);
 
@@ -212,13 +213,13 @@ namespace MyAdo
 
 		if (bWriteConsole)
 		{
-			Log::Write_2_Console(ELogType::Error, chErrorInfo, bWriteFile, __FUNCTION__);
+			Log::Write_2_Console(ELogType::Error, chErrorInfo, bWriteFile, __FUNCTION__, strFilePath, nRowNo);
 		}
 		else
 		{
 			if (bWriteFile)
 			{
-				Log::Write_2_File(ELogType::Error, chErrorInfo, true, true, __FUNCTION__);
+				Log::Write_2_File(ELogType::Error, chErrorInfo, true, true, __FUNCTION__, strFilePath, nRowNo);
 			}
 		}
 	}
@@ -273,7 +274,7 @@ namespace MyAdo
 			{
 				char ch[1024] = { 0 };
 				sprintf_s(ch, "Conn db fail, conn string: %s, msg: HRESULT Invalid", FilterConnStr(strConn).c_str());
-				ProcessError(ch);
+				ProcessError(ch, __FUNCTION__);
 
 				return false;
 			}
@@ -285,7 +286,7 @@ namespace MyAdo
 			char ch[1024] = { 0 };
 			sprintf_s(ch, "Conn db fail, conn string: %s, %s", FilterConnStr(strConn).c_str(), str.c_str());
 
-			ProcessError(ch);
+			ProcessError(ch, __FUNCTION__);
 
 			return false;
 		}
@@ -345,7 +346,7 @@ namespace MyAdo
 			{
 				result.strErrorInfo = FormatComError(e);
 				result.bError = true;
-				ProcessError(result.strErrorInfo);
+				ProcessError(result.strErrorInfo, __FUNCTION__);
 			}
 		}
 		else
@@ -449,7 +450,7 @@ namespace MyAdo
 			{
 				result.strErrorInfo = FormatComError(e);
 				result.bError = true;
-				ProcessError(result.strErrorInfo);
+				ProcessError(result.strErrorInfo, __FUNCTION__);
 			}
 		}
 		else

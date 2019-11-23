@@ -36,10 +36,13 @@ namespace MyAdo
 		//************************************
 		// Method:    Process Error
 		// Parameter: string strErrorInfo
+		// Parameter: const string & strFunctionName
 		// Parameter: bool bWriteConsole
 		// Parameter: bool bWriteFile
+		// Parameter: const string & strFilePath
+		// Parameter: int nRowNo
 		//************************************
-		void ProcessError(string strErrorInfo, bool bWriteConsole = true, bool bWriteFile = true);
+		void ProcessError(string strErrorInfo, const string& strFunctionName, bool bWriteConsole = true, bool bWriteFile = true, const string& strFilePath = __FILE__, int nRowNo = __LINE__);
 
 		//************************************
 		// Method:    Format Com Error

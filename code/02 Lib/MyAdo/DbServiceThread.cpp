@@ -19,9 +19,9 @@ namespace MyAdo
 
 	void DbServiceThread::OnStart()
 	{
-		__super::OnStart();
-
 		::CoInitialize(NULL);
+
+		__super::OnStart();
 	}
 
 	void DbServiceThread::OnWhile()

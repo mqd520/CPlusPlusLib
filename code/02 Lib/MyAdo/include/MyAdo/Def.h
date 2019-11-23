@@ -9,8 +9,8 @@ using namespace std::placeholders;
 
 
 #define		MyAdo_ReturnValue_ParamName			("@RETURN_VALUE")		// return value param name
-#define		MyAdo_Max_Connect_Timeout			(5)						// max connect time
-#define		MyAdo_Max_Command_Timeout			(5)						// max command time
+#define		MyAdo_Max_Connect_Timeout			(90)					// max connect time
+#define		MyAdo_Max_Command_Timeout			(90)					// max command time
 #define		MyAdo_Max_ErrorInfo					(1024)					// max error info
 
 
