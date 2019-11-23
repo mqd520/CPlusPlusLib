@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<root>
+	<MultiThread>1</MultiThread>
+
+	<SqlTaskThreadTime>5000</SqlTaskThreadTime>
+	
+	<AdoThread>
+		<count>1</count>
+		<time>50</time>
+	</AdoThread>
+	
+	<DbConnection>DSN=MySQL_localhost;Server=127.0.0.1;database=adotest;</DbConnection>
+	
+	<sqls>
+		<sql sql="SELECT * FROM categories LIMIT 1, 10" type="1" count="1"></sql>
+		<sql sql="SELECT count(0) FROM categories" type="1" count="1"></sql>
+		<sql sql="SELECT * FROM customers LIMIT 1, 10" type="1" count="1"></sql>
+		<sql sql="SELECT count(0) FROM customers" type="1" count="1"></sql>
+		<sql sql="SELECT * FROM employees LIMIT 1, 10" type="1" count="1"></sql>
+		<sql sql="SELECT count(0) FROM employees" type="1" count="1"></sql>
+	</sqls>
+</root>

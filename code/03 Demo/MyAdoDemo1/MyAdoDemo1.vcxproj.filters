@@ -4,14 +4,26 @@
     <Filter Include="00 Default">
       <UniqueIdentifier>{101df524-3f70-433c-a105-6c757f967b62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02 AdoHelper">
-      <UniqueIdentifier>{0a094bf2-6705-47d4-84e8-c5caf3096f3b}</UniqueIdentifier>
+    <Filter Include="01 Def">
+      <UniqueIdentifier>{7b5f51d8-b82c-4bdc-af39-04fb53343da1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01 Config">
+    <Filter Include="02 Config">
       <UniqueIdentifier>{c5b93ad6-4612-4376-8e88-98b64016d31b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03 Thread">
+    <Filter Include="04 Service">
+      <UniqueIdentifier>{a99d7461-0ae0-4348-a6aa-ddc038cde68b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Common">
+      <UniqueIdentifier>{bc9959f4-c29b-42cb-99b8-bdcad234cb84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Service\02 Thread">
       <UniqueIdentifier>{3d6dfbcd-f535-40a3-93cd-3ec1974f8b83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Service\03 Service">
+      <UniqueIdentifier>{c0700544-986d-48c5-8ce9-c82784cebcf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Service\01 Ado Connection">
+      <UniqueIdentifier>{0a094bf2-6705-47d4-84e8-c5caf3096f3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -21,11 +33,26 @@
     <ClInclude Include="targetver.h">
       <Filter>00 Default</Filter>
     </ClInclude>
-    <ClInclude Include="Thread1.h">
-      <Filter>03 Thread</Filter>
-    </ClInclude>
     <ClInclude Include="Config.h">
-      <Filter>01 Config</Filter>
+      <Filter>02 Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Def.h">
+      <Filter>01 Def</Filter>
+    </ClInclude>
+    <ClInclude Include="InitService.h">
+      <Filter>04 Service</Filter>
+    </ClInclude>
+    <ClInclude Include="AdoConnection.h">
+      <Filter>04 Service\01 Ado Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="MainService.h">
+      <Filter>04 Service</Filter>
+    </ClInclude>
+    <ClInclude Include="SqlTask.h">
+      <Filter>04 Service\03 Service</Filter>
+    </ClInclude>
+    <ClInclude Include="SqlTaskThread.h">
+      <Filter>04 Service\02 Thread</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -33,11 +60,23 @@
       <Filter>00 Default</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Thread1.cpp">
-      <Filter>03 Thread</Filter>
-    </ClCompile>
     <ClCompile Include="Config.cpp">
-      <Filter>01 Config</Filter>
+      <Filter>02 Config</Filter>
+    </ClCompile>
+    <ClCompile Include="InitService.cpp">
+      <Filter>04 Service</Filter>
+    </ClCompile>
+    <ClCompile Include="AdoConnection.cpp">
+      <Filter>04 Service\01 Ado Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="MainService.cpp">
+      <Filter>04 Service</Filter>
+    </ClCompile>
+    <ClCompile Include="SqlTask.cpp">
+      <Filter>04 Service\03 Service</Filter>
+    </ClCompile>
+    <ClCompile Include="SqlTaskThread.cpp">
+      <Filter>04 Service\02 Thread</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

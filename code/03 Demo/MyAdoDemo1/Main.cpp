@@ -6,15 +6,12 @@
 #include <string>
 using namespace std;
 
+#include "InitService.h"
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-
-
-
-
-
-
+	InitService::Init();
 
 	char chLine[1024] = { 0 };
 	while (true)
@@ -25,6 +22,8 @@ int _tmain(int argc, _TCHAR* argv[])
 			break;
 		}
 	}
+
+	InitService::Exit();
 
 	return 0;
 }
