@@ -13,6 +13,7 @@ using namespace std;
 #include "com/Log.h"
 #include "com/TimeTool.h"
 #include "com/CommonTool.h"
+#include "com/StringTool.h"
 using namespace com;
 
 #include "libcurlHttp/LibcurlHttpApp.h"
@@ -88,9 +89,7 @@ BOOL CLibcurlHttpDemoApp::InitInstance()
 	Log::RegLogFileCallback(std::bind(OnLog, _1, _2, _3));
 
 	LibcurlHttpApp::Init();
-	LibcurlHttpApp::EnableHttpReqLog(true);
-	// LibcurlHttpApp::SetTimeout(90, 3);
-	LibcurlHttpApp::SetHttpProxy("127.0.0.1:8888");
+	// LibcurlHttpApp::SetHttpProxy("127.0.0.1:8888");
 
 
 	CLibcurlHttpDemoDlg dlg;

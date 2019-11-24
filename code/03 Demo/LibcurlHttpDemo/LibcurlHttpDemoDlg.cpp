@@ -35,6 +35,8 @@ BEGIN_MESSAGE_MAP(CLibcurlHttpDemoDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON1, &CLibcurlHttpDemoDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON2, &CLibcurlHttpDemoDlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON3, &CLibcurlHttpDemoDlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
 
@@ -97,8 +99,35 @@ void CLibcurlHttpDemoDlg::OnBnClickedButton1()
 	// TODO:  在此添加控件通知处理程序代码
 	LibcurlHttp http;
 	http.SetFormItem("username", "AAtest001");
-	http.SetFormItem("pwd", "a123456");
-	LibcurlHttpResult result = http.Post("http://127.0.0.1:8017", true, true);
+	http.SetFormItem("pwd", "123456");
+	LibcurlHttpResult result = http.Post("http://192.168.43.121:8001", true, true);
+
+	int status = result.nHttpStatus;
+
+	OutputDebugStringA(result.response.c_str());
+	OutputDebugStringA("\n");
+}
+
+
+void CLibcurlHttpDemoDlg::OnBnClickedButton2()
+{
+	// TODO:  在此添加控件通知处理程序代码
+	LibcurlHttp http;
+	http.SetBodyData(R"({"username": "AAtest001", "pwd": "123456"})");
+	LibcurlHttpResult result = http.Post("http://192.168.43.121:8001/json", false, false, "application/json");
+
+	int status = result.nHttpStatus;
+
+	OutputDebugStringA(result.response.c_str());
+	OutputDebugStringA("\n");
+}
+
+
+void CLibcurlHttpDemoDlg::OnBnClickedButton3()
+{
+	// TODO:  在此添加控件通知处理程序代码
+	LibcurlHttp http;
+	LibcurlHttpResult result = http.Get("http://www.baidu.com", false, false);
 
 	int status = result.nHttpStatus;
 
