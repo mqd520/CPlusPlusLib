@@ -86,10 +86,10 @@
     <ClCompile Include="NetworkStreamWriteDemo.cpp">
       <Filter>07 Stream</Filter>
     </ClCompile>
-    <ClCompile Include="CommonDemo.cpp" />
     <ClCompile Include="AesDemo.cpp">
       <Filter>09 Encrypt</Filter>
     </ClCompile>
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt">

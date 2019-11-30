@@ -38,8 +38,9 @@ namespace libcurlHttp
 
 		//************************************
 		// Method:    Exit
+		// Parameter: int timeout
 		//************************************
-		static void Exit();
+		static void Exit(int timeout = 1 * 1000);
 
 		//************************************
 		// Method:    Set Http Proxy
@@ -77,5 +78,17 @@ namespace libcurlHttp
 		// Method:    Is Enable Http Req Log
 		//************************************
 		static bool IsEnableHttpReqLog();
+
+		//************************************
+		// Method:    Set Multi Thread
+		// Parameter: int nCount
+		// Parameter: int nSleepTime
+		//************************************
+		static void SetMultiThread(int nCount = 1, int nSleepTime = 50);
+
+		//************************************
+		// Method:    Is All Thread Started
+		//************************************
+		static bool IsAllThreadStarted();
 	};
 }

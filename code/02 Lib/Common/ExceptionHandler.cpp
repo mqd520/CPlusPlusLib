@@ -47,10 +47,6 @@ namespace com
 
 	LONG WINAPI ExceptionFilter(LPEXCEPTION_POINTERS lpExceptionInfo)
 	{
-		if (IsDebuggerPresent())
-		{
-			return EXCEPTION_CONTINUE_SEARCH;
-		}
 		int ret = GenerateMiniDump(lpExceptionInfo);
 
 		if (_lpfnCallback != NULL)

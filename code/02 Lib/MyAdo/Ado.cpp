@@ -239,7 +239,7 @@ namespace MyAdo
 
 	bool Ado::IsConnectionOpened()
 	{
-		return pConnection != nullptr && pConnection->State == adStateOpen;
+		return pConnection && pConnection->State == adStateOpen;
 	}
 
 	bool Ado::Connect()
@@ -347,6 +347,8 @@ namespace MyAdo
 				result.strErrorInfo = FormatComError(e);
 				result.bError = true;
 				ProcessError(result.strErrorInfo, __FUNCTION__);
+
+				CloseConnection();
 			}
 		}
 		else
@@ -451,6 +453,8 @@ namespace MyAdo
 				result.strErrorInfo = FormatComError(e);
 				result.bError = true;
 				ProcessError(result.strErrorInfo, __FUNCTION__);
+
+				CloseConnection();
 			}
 		}
 		else

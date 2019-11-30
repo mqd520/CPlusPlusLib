@@ -30,21 +30,21 @@ using namespace std;
 #include "com/NumberTool.h"
 #include <time.h>
 #include "com/TimeTool.h"
+#include "com/CommonTool.h"
 #include "com/Log.h"
+#include "com/ExceptionHandler.h"
+using namespace com;
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//printf("long: %d, short: %d \n", sizeof(long), sizeof(short));
+	ExceptionHandler::Init();
+	ExceptionHandler::SetFileName("CommonDemo.exe");
 
 
-	//printf("Local host endian: %d \n", StreamTool::GetLocalHostEndian());
-
-
-	//BYTE buf1[] = { 1, 2, 3 };
-	//BYTE buf2[] = { 0, 0, 0 };
-	//memcpy(buf2, buf1, 3);
-	//printf("buf2: %d, %d, %d \n", buf2[0], buf2[1], buf2[2]);
+	int i = 0;
+	int j = 0;
+	int n = i / j;
 
 
 

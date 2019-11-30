@@ -27,22 +27,27 @@ void SqlTask::Process()
 		Log::Write_2_Console(ELogType::Info, log, false, __FUNCTION__, __FILE__, __LINE__);
 		Log::Write_2_Console(ELogType::Info, "Start ...", false, __FUNCTION__, __FILE__, __LINE__);
 
+		Ado ado(_cfg.strDbConnection, EDbType::MySQL);
+
 		time_t timestamp1 = TimeTool::GetCurTimeStamp();
 		for (int i = 0; i < info.nCount; i++)
 		{
-			AdoConnection::default.ReadDataSet(info.strSql, AdoParam());
+			ado.ReadDataSet(info.strSql);
 		}
 		time_t timestamp2 = TimeTool::GetCurTimeStamp();
 
-		string sql = "insert into Logs (SqlStatement, Count, Time, Type, ThreadCount) values(?, ?, ?, ?, ?)";
+		string sql = "insert into Logs (SqlStatement, Count, Time, Type, ThreadCount, RecordTime) values(?, ?, ?, ?, ?, ?)";
 		AdoParam param;
 		param.CreatePara("@SqlStatement", adVarChar, adParamInput, 255, _variant_t(info.strSql.c_str()));
 		param.CreatePara("@Count", adInteger, adParamInput, sizeof(int), _variant_t(info.nCount));
 		param.CreatePara("@Time", adInteger, adParamInput, sizeof(int), _variant_t(timestamp2 - timestamp1));
 		param.CreatePara("@Type", adInteger, adParamInput, sizeof(int), _variant_t(info.nType));
 		param.CreatePara("@ThreadCount", adInteger, adParamInput, sizeof(int), _variant_t(_cfg.bMultiThread ? _cfg.adoThreadInfo.nCount : 1));
-		AdoConnection::default.ExecuteNonQuery(sql, param);
+		param.CreatePara("@RecordTime", adDBDate, adParamInput, -1, _variant_t(TimeTool::Format().c_str()));
+		ado.ExecuteNonQuery(sql, param);
 
 		Log::Write_2_Console(ELogType::Info, "End ... \n", false, __FUNCTION__, __FILE__, __LINE__);
+
+		ado.CloseConnection();
 	}
 }

@@ -181,7 +181,7 @@ namespace MyAdo
 		// Parameter: AdoParam param
 		// Parameter: ECmdType type
 		//************************************
-		AdoResult ExecuteNonQuery(string sql, AdoParam param, ECmdType type = ECmdType::Text);
+		AdoResult ExecuteNonQuery(string sql, AdoParam param = AdoParam(), ECmdType type = ECmdType::Text);
 
 		//************************************
 		// Method:    Read DataSet
@@ -189,6 +189,6 @@ namespace MyAdo
 		// Parameter: AdoParam param
 		// Parameter: ECmdType type
 		//************************************
-		AdoResult ReadDataSet(string sql, AdoParam param, ECmdType type = ECmdType::Text);
+		AdoResult ReadDataSet(string sql, AdoParam param = AdoParam(), ECmdType type = ECmdType::Text);
 	};
 }

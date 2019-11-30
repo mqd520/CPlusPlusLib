@@ -10,66 +10,22 @@ using namespace com;
 
 
 size_t OnWriteData(void* buffer, size_t size, size_t nmemb, void* lpVoid);
+size_t OnWriteData1(void* buffer, size_t size, size_t nmemb, void* lpVoid);
 size_t OnWriteHeader(void* buffer, size_t size, size_t nmemb, void* lpVoid);
 
 namespace libcurlHttp
 {
-	struct curl_slist * LibcurlHttp::SetHeadersOpt(CURL* pCurl)
+	LibcurlHttp::LibcurlHttp()
+		: strBodyData("")
+		, bIsFormData(false)
 	{
-		struct curl_slist *pHeaders = NULL;
 
-		for (auto & it : mapHeaders)
-		{
-			string str = it.first + ":" + it.second;
-			//pHeaders = curl_slist_append(pHeaders, str.c_str());
-		}
-
-		if (pHeaders)
-		{
-			//curl_easy_setopt(pCurl, CURLOPT_HTTPHEADER, pHeaders);
-		}
-
-		return pHeaders;
-	}
-
-	void LibcurlHttp::SetBodyOpt(CURL* pCurl, const string& method)
-	{
-		if (method == "POST")
-		{
-			struct curl_slist *pBody = NULL;
-
-			if (IsFormData())
-			{
-				int n = 0;
-				string formData;
-				for (auto & it : mapFormItems)
-				{
-					if (n == 0)
-					{
-						formData += it.first + "=" + it.second;
-					}
-					else
-					{
-						formData += "&" + it.first + "=" + it.second;
-					}
-
-					n++;
-				}
-
-				curl_easy_setopt(pCurl, CURLOPT_POSTFIELDS, formData.c_str());
-				curl_easy_setopt(pCurl, CURLOPT_POSTFIELDSIZE, formData.size());
-			}
-			else
-			{
-				curl_easy_setopt(pCurl, CURLOPT_POSTFIELDS, strBodyData.c_str());
-			}
-		}
 	}
 
 	bool LibcurlHttp::IsFormData()
 	{
-		if (GetHeader("Content-Type") == "application/x-www-form-urlencoded" ||
-			GetHeader("Content-type") == "application/x-www-form-urlencoded")
+		if (GetHeader("Content-Type").find("application/x-www-form-urlencoded") != string::npos ||
+			GetHeader("Content-type").find("application/x-www-form-urlencoded") != string::npos)
 		{
 			return true;
 		}
@@ -99,17 +55,55 @@ namespace libcurlHttp
 		CURL* pCurl = Init();
 		if (pCurl)
 		{
+			struct curl_slist* pHeader = NULL;
+
+			//curl_easy_setopt(pCurl, CURLOPT_NOPROGRESS, 1L);
 			curl_easy_setopt(pCurl, CURLOPT_URL, strUrl.c_str());
 
-			if (method == "POST" && IsFormData())
+			if (method == "POST")
 			{
-				curl_easy_setopt(pCurl, CURLOPT_POST, true);
+				curl_easy_setopt(pCurl, CURLOPT_POST, 1);
 			}
 
-			struct curl_slist* pHeaders = SetHeadersOpt(pCurl);
-			//SetBodyOpt(pCurl, method);
+			for (auto & it : mapHeaders)
+			{
+				string str = it.first + ": " + it.second;
+				pHeader = curl_slist_append(pHeader, str.c_str());
+			}
 
-			curl_easy_setopt(pCurl, CURLOPT_READFUNCTION, NULL);
+			if (pHeader)
+			{
+				curl_easy_setopt(pCurl, CURLOPT_HTTPHEADER, pHeader);
+			}
+
+			string bodyData;
+			if (method == "POST")
+			{
+				if (IsFormData())
+				{
+					int n = 0;
+					for (auto & it : mapFormItems)
+					{
+						if (n == 0)
+						{
+							bodyData += it.first + "=" + it.second;
+						}
+						else
+						{
+							bodyData += "&" + it.first + "=" + it.second;
+						}
+
+						n++;
+					}
+				}
+				else
+				{
+					bodyData = strBodyData;
+				}
+
+				curl_easy_setopt(pCurl, CURLOPT_POSTFIELDS, bodyData.c_str());
+				curl_easy_setopt(pCurl, CURLOPT_POSTFIELDSIZE, bodyData.size());
+			}
 
 			if (StringTool::StartWith(strUrl, "https", false))
 			{
@@ -121,6 +115,10 @@ namespace libcurlHttp
 			{
 				curl_easy_setopt(pCurl, CURLOPT_WRITEFUNCTION, OnWriteData);
 				curl_easy_setopt(pCurl, CURLOPT_WRITEDATA, (void*)&pResult->response);
+			}
+			else
+			{
+				curl_easy_setopt(pCurl, CURLOPT_WRITEFUNCTION, OnWriteData1);
 			}
 
 			TimeoutInfo timeoutInfo = LibcurlHttpApp::GetTimeoutInfo();
@@ -151,13 +149,14 @@ namespace libcurlHttp
 			}
 
 			string strHeaders;
-			curl_easy_setopt(pCurl, CURLOPT_HEADERFUNCTION, OnWriteHeader);
-			curl_easy_setopt(pCurl, CURLOPT_HEADERDATA, (void*)&strHeaders);
+			if (bRecvHeader)
+			{
+				curl_easy_setopt(pCurl, CURLOPT_HEADERFUNCTION, OnWriteHeader);
+				curl_easy_setopt(pCurl, CURLOPT_HEADERDATA, (void*)&strHeaders);
+			}
 
 			curl_easy_setopt(pCurl, CURLOPT_FOLLOWLOCATION, 1);
 			curl_easy_setopt(pCurl, CURLOPT_NOSIGNAL, 1);
-
-			SetBodyOpt(pCurl, method);
 
 			if (LibcurlHttpApp::IsEnableHttpReqLog())
 			{
@@ -181,34 +180,30 @@ namespace libcurlHttp
 			CURLcode code = curl_easy_perform(pCurl);
 			pResult->code = code;
 			pResult->bSuccess = code == CURLE_OK;
-
-			vector<pair<string, string>> vecHeaders;
-			vector<string> vec = StringTool::Split(strHeaders, "\r\n");
-			int n = 0;
-			for (auto & it : vec)
-			{
-				if (!it.empty())
-				{
-					if (n == 0)
-					{
-						vector<string> vec1 = StringTool::Split(it, " ");
-						pResult->nHttpStatus = StringTool::To_Int32(vec1[1]);
-					}
-					else
-					{
-						vector<string> vec1 = StringTool::Split(it, ":");
-						if (vec1.size() == 2)
-						{
-							vecHeaders.push_back({ vec1[0], StringTool::Trim(vec1[1]) });
-						}
-					}
-				}
-
-				n++;
-			}
+			curl_easy_getinfo(pCurl, CURLINFO_RESPONSE_CODE, &pResult->nHttpStatus);
 
 			if (bRecvHeader)
 			{
+				vector<pair<string, string>> vecHeaders;
+				vector<string> vec = StringTool::Split(strHeaders, "\r\n");
+				int n = 0;
+				for (auto & it : vec)
+				{
+					if (!it.empty())
+					{
+						if (n > 0)
+						{
+							vector<string> vec1 = StringTool::Split(it, ":");
+							if (vec1.size() == 2)
+							{
+								vecHeaders.push_back({ vec1[0], StringTool::Trim(vec1[1]) });
+							}
+						}
+					}
+
+					n++;
+				}
+
 				pResult->vecHeaders = vecHeaders;
 			}
 
@@ -219,7 +214,11 @@ namespace libcurlHttp
 			}
 
 			curl_easy_cleanup(pCurl);
-			curl_slist_free_all(pHeaders);
+
+			if (pHeader)
+			{
+				curl_slist_free_all(pHeader);
+			}
 		}
 	}
 
@@ -342,7 +341,7 @@ namespace libcurlHttp
 	}
 
 	LibcurlHttpResult LibcurlHttp::Get(const string& strUrl, bool bRecvResponse /*= false*/, bool bRecvHeader /*= false*/,
-		const string& contentType /*= "application/x-www-form-urlencoded"*/)
+		const string& contentType /*= ""*/)
 	{
 		LibcurlHttpResult result;
 
@@ -370,6 +369,11 @@ size_t OnWriteData(void* buffer, size_t size, size_t nmemb, void* lpVoid)
 	str->append(pData, size * nmemb);
 
 	return nmemb;
+}
+
+size_t OnWriteData1(void* buffer, size_t size, size_t nmemb, void* lpVoid)
+{
+	return size * nmemb;
 }
 
 size_t OnWriteHeader(void* buffer, size_t size, size_t nmemb, void* lpVoid)

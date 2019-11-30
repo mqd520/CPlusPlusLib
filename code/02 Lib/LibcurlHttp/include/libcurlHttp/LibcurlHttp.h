@@ -24,6 +24,9 @@ namespace libcurlHttp
 	// Libcurl Http
 	class LibcurlHttp
 	{
+	public:
+		LibcurlHttp();
+
 	protected:
 		map<string, string> mapHeaders;		// Header map
 		map<string, string> mapFormItems;	// Form Item map
@@ -31,19 +34,6 @@ namespace libcurlHttp
 		bool bIsFormData;					// Whether form data
 
 	protected:
-		//************************************
-		// Method:    SetHeadersOpt
-		// Parameter: CURL * pCurl
-		//************************************
-		struct curl_slist* SetHeadersOpt(CURL* pCurl);
-
-		//************************************
-		// Method:    Set Body Opt
-		// Parameter: CURL * pCurl
-		// Parameter: string method
-		//************************************
-		void SetBodyOpt(CURL* pCurl, const string& method);
-
 		//************************************
 		// Method:    IsFormData
 		//************************************
@@ -177,7 +167,7 @@ namespace libcurlHttp
 		// Parameter: const string & contentType
 		//************************************
 		LibcurlHttpResult Post(const string& strUrl, bool bRecvResponse = false, bool bRecvHeader = false,
-			const string& contentType = "application/x-www-form-urlencoded");
+			const string& contentType = "application/x-www-form-urlencoded;charset=utf-8");
 
 		//************************************
 		// Method:    Get
@@ -186,6 +176,6 @@ namespace libcurlHttp
 		// Parameter: bool bRecvHeader
 		//************************************
 		LibcurlHttpResult Get(const string& strUrl, bool bRecvResponse = false, bool bRecvHeader = false, 
-			const string& contentType = "application/x-www-form-urlencoded");
+			const string& contentType = "");
 	};
 }

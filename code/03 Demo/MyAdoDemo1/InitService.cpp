@@ -49,9 +49,9 @@ void InitService::Exit()
 {
 	MyAdoApp::Exit(10 * 10000);
 
-	AdoConnection::Exit();
-
 	_mainSrv.Exit();
+
+	AdoConnection::Exit();
 }
 
 void OnLog(ELogType type, string& log, ExtraLogInfo& info)
@@ -76,5 +76,5 @@ void OnLog(ELogType type, string& log, ExtraLogInfo& info)
 
 void OnException(void* lpParam1, void* lpParam2)
 {
-	InitService::Exit();
+	// InitService::Exit();
 }

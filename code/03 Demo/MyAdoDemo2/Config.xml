@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<root>
+	<AdoCount>1</AdoCount>
+	
+	<TaskSleepTime>1000</TaskSleepTime>
+
+	<!-- MySql (DSN) -->
+	<DbConnection>DSN=MySQL_localhost_32;SERVER=127.0.0.1;DATABASE=adotest</DbConnection>
+	
+	<!-- MySql (connectionstring) -->
+	<!-- <DbConnection>Driver=MySQL ODBC 8.0 ANSI Driver;SERVER=127.0.0.1;PORT=3306;UID=root;PWD=123456;DATABASE=httptest</DbConnection> -->
+</root>

@@ -7,6 +7,9 @@
     <Filter Include="01 Http">
       <UniqueIdentifier>{3e9ea992-f0ba-46db-8d5c-38726007cecd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02 Async">
+      <UniqueIdentifier>{f44e3dcc-4a62-42ec-b702-4b044a71a327}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -19,6 +22,12 @@
       <Filter>01 Http</Filter>
     </ClInclude>
     <ClInclude Include="include\libcurlHttp\LibcurlHttpApp.h" />
+    <ClInclude Include="include\libcurlHttp\AsyncHttp.h">
+      <Filter>02 Async</Filter>
+    </ClInclude>
+    <ClInclude Include="AsyncHttpThread.h">
+      <Filter>02 Async</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -28,6 +37,12 @@
       <Filter>01 Http</Filter>
     </ClCompile>
     <ClCompile Include="LibcurlHttpApp.cpp" />
+    <ClCompile Include="AsyncHttp.cpp">
+      <Filter>02 Async</Filter>
+    </ClCompile>
+    <ClCompile Include="AsyncHttpThread.cpp">
+      <Filter>02 Async</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt">

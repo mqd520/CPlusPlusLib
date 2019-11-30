@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="00 Default">
+      <UniqueIdentifier>{afddf6f2-4500-42bc-9c86-1bf4a47dbc90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01 Def">
+      <UniqueIdentifier>{e4f60dca-62f9-4f68-b945-3d6a62c8af27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02 Config">
+      <UniqueIdentifier>{5bbf907d-cec3-4f76-ae03-ce1a1b860237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Common">
+      <UniqueIdentifier>{c2bacc9f-e17d-4130-b7b7-86dc259695a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Service">
+      <UniqueIdentifier>{cad4ee9f-f087-4dbb-87ea-920000801341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Service\01 Task">
+      <UniqueIdentifier>{6738e0bf-9fbd-466d-8c50-ea5223b19a37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Service\02 Thread">
+      <UniqueIdentifier>{a271574a-e68c-47dd-9187-5d28cf2dcccb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>00 Default</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>00 Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Def.h">
+      <Filter>01 Def</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>02 Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Task.h">
+      <Filter>04 Service\01 Task</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskThread.h">
+      <Filter>04 Service\02 Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="MainService.h">
+      <Filter>04 Service</Filter>
+    </ClInclude>
+    <ClInclude Include="InitService.h">
+      <Filter>04 Service</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>00 Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Config.cpp">
+      <Filter>02 Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Task.cpp">
+      <Filter>04 Service\01 Task</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskThread.cpp">
+      <Filter>04 Service\02 Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="MainService.cpp">
+      <Filter>04 Service</Filter>
+    </ClCompile>
+    <ClCompile Include="InitService.cpp">
+      <Filter>04 Service</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>00 Default</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
